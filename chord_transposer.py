@@ -15,6 +15,10 @@ When the script is run, the 'main' function handles the entire program.
 # Global Constants
 major_key_list = {'A':1,'A#':2,'B':3,'C':4,'C#':5,'D':6,'D#':7,'E':8,'F':9,'F#':10,'G':11,'G#':12}
 minor_key_list = {'Am':1,'A#m':2,'Bm':3,'Cm':4,'C#m':5,'Dm':6,'D#m':7,'Em':8,'Fm':9,'F#m':10,'Gm':11,'G#m':12}
+
+list_of_major_chords = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#']
+list_of_minor_chords = ['Am','A#m','Bm','Cm','C#m','Dm','D#m','Em','Fm','F#m','Gm','G#m']
+
 line = "---------------------------------------------"
 input_indent = "\n\n--->"
 
@@ -66,14 +70,12 @@ def main():
             transposing_major_func(key)
         if key in minor_key_list:
             transposing_minor_func(key)
-
-
-
-
-
+            
+    print('Done')
 
 
 transpose_steps = ''
+
 def halfstep_calc(starting_key,ending_key):
     global transpose_steps
     if starting_key in major_key_list:
@@ -95,8 +97,6 @@ def original_MINOR_func(keys):
     global original_minor_chord_value
     original_minor_chord_value = minor_key_list[ "%s" % keys ]
 
-list_of_major_chords = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#']
-list_of_minor_chords = ['Am','A#m','Bm','Cm','C#m','Dm','D#m','Em','Fm','F#m','Gm','G#m']
 
 def transposing_major_func(keys):
     global transpose_steps
