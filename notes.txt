@@ -1,0 +1,8 @@
+In order to make "chordtransposer-101" stand out,
+it must have the easiness-feel of "tabtuner.com".
+
+But it will also include a easy share button, to instantly
+share your new transposed song to your music friends.
+
+Also, it will add the option to transpose to a specific chord
+and the option to transpose a specific number steps higher/lower.
