@@ -1,0 +1,24 @@
+{
+  "name": "chord_transposer",
+  "version": "1.0.0",
+  "description": "A musical commandline tool to transpose notes to different keys",
+  "main": " ",
+  "scripts": {
+    "test": " "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josueal1/chord_transposer.git"
+  },
+  "keywords": [
+    "chord",
+    "music",
+    "transpose"
+  ],
+  "author": "Josue Lopez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/josueal1/chord_transposer/issues"
+  },
+  "homepage": "https://github.com/josueal1/chord_transposer#readme"
+}
