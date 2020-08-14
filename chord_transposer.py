@@ -13,7 +13,7 @@ When the script is run, the 'main' function handles the entire program.
 # Imports
 
 # Global Constants
-major_key_list = {
+MAJOR_KEY_LIST = {
     "A": 1,
     "A#": 2,
     "B": 3,
@@ -27,7 +27,8 @@ major_key_list = {
     "G": 11,
     "G#": 12,
 }
-minor_key_list = {
+
+MINOR_KEY_LIST = {
     "Am": 1,
     "A#m": 2,
     "Bm": 3,
@@ -42,9 +43,22 @@ minor_key_list = {
     "G#m": 12,
 }
 
-list_of_major_chords = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"]
+LIST_OF_MAJOR_CHORDS = [
+    "A",
+    "A#",
+    "B",
+    "C",
+    "C#",
+    "D",
+    "D#",
+    "E",
+    "F",
+    "F#",
+    "G",
+    "G#"
+]
 
-list_of_minor_chords = [
+LIST_OF_MINOR_CHORDS = [
     "Am",
     "A#m",
     "Bm",
@@ -58,21 +72,23 @@ list_of_minor_chords = [
     "Gm",
     "G#m",
 ]
-line = "---------------------------------------------"
-input_indent = "\n--->"
+
+LINE = "---------------------------------------------"
+INPUT_INDENT = "\n--->"
 
 # Global Variables
-original_minor_chord_value = ""
-original_major_chord_value = ""
+ORIGINAL_MINOR_CHORD_VALUE = ""
+ORIGINAL_MAJOR_CHORD_VALUE = ""
 
 
 def main():
+    """ Main function that executes the commandline program """
     keys_to_transpose = []
 
-    print(line)
+    print(LINE)
 
-    starting_key = input("From what key are you trying to transpose?" + input_indent)
-    ending_key = input("To what key are you trying to transpose?" + input_indent)
+    starting_key = input("From what key are you trying to transpose?" + INPUT_INDENT)
+    ending_key = input("To what key are you trying to transpose?" + INPUT_INDENT)
 
     global transpose_steps
     transpose_steps = _calc_transpose_steps(
@@ -81,11 +97,11 @@ def main():
 
     print("Therefore we will be transposing with", transpose_steps, "steps")
     # -------------------------------------------------------------------------
-    print(line)
-    given_value = int(input("How manys chords are in your list?" + input_indent))
+    print(LINE)
+    given_value = int(input("How manys chords are in your list?" + INPUT_INDENT))
 
     original_chords = input(
-        f"Enter the {given_value} chords as capital letters in one line.\n"
+        f"Enter the {given_value} chords as capital letters in one LINE.\n"
     )
 
     if len(original_chords.split()) == given_value:
@@ -96,58 +112,65 @@ def main():
         )
 
     # -------------------------------------------------------------------------
-    print(line)
+    print(LINE)
     print("These are your original keys:")
     print(original_chords)
     # -------------------------------------------------------------------------
-    print(line)
+    print(LINE)
     print("These are your Transposed Keys:")
     for key in keys_to_transpose:
-        if key in major_key_list:
+        if key in MAJOR_KEY_LIST:
             transposing_major_func(key)
-        if key in minor_key_list:
+        if key in MINOR_KEY_LIST:
             transposing_minor_func(key)
 
     print("Done")
 
 
 def _calc_transpose_steps(starting_key, ending_key):
-    if starting_key in major_key_list:
-        starting_digit = major_key_list[starting_key]
-        ending_digit = major_key_list[ending_key]
+    """ Util function:  Given a two char's, this function will calculate
+        the number of transposing steps in between the keys
+    """
+    if starting_key in MAJOR_KEY_LIST:
+        starting_digit = MAJOR_KEY_LIST[starting_key]
+        ending_digit = MAJOR_KEY_LIST[ending_key]
 
-    if starting_key in minor_key_list:
-        starting_digit = minor_key_list[starting_key]
-        ending_digit = minor_key_list[ending_key]
+    if starting_key in MINOR_KEY_LIST:
+        starting_digit = MINOR_KEY_LIST[starting_key]
+        ending_digit = MINOR_KEY_LIST[ending_key]
 
     transpose_steps = abs(starting_digit - ending_digit)
     return transpose_steps
 
 
-def original_MAJOR_func(keys):
-    global original_major_chord_value
-    original_major_chord_value = major_key_list[keys]
+def original_major_func(keys):
+    """ Setter function to update the global variable """
+    global ORIGINAL_MAJOR_CHORD_VALUE
+    ORIGINAL_MAJOR_CHORD_VALUE = MAJOR_KEY_LIST[keys]
 
 
-def original_MINOR_func(keys):
-    global original_minor_chord_value
-    original_minor_chord_value = minor_key_list[keys]
+def original_minor_func(keys):
+    """ Setter function to update the global variable """
+    global ORIGINAL_MINOR_CHORD_VALUE
+    ORIGINAL_MINOR_CHORD_VALUE = MINOR_KEY_LIST[keys]
 
 
 def transposing_major_func(keys):
-    new_transposed_chords = major_key_list[keys] + transpose_steps
+    """ Given a list of char's, prints a new list with transposed notes """
+    new_transposed_chords = MAJOR_KEY_LIST[keys] + transpose_steps
 
     if new_transposed_chords > 12:
         new_transposed_chords = new_transposed_chords - 12
-    print(list_of_major_chords[new_transposed_chords - 1], end=" ")
+    print(LIST_OF_MAJOR_CHORDS[new_transposed_chords - 1], end=" ")
 
 
 def transposing_minor_func(keys):
-    new_transposed_chords = minor_key_list[keys] + transpose_steps
+    """ Given a list of char's, prints a new list with transposed notes """
+    new_transposed_chords = MINOR_KEY_LIST[keys] + transpose_steps
 
     if new_transposed_chords > 12:
         new_transposed_chords = new_transposed_chords - 12
-    print(list_of_minor_chords[new_transposed_chords - 1], end=" ")
+    print(LIST_OF_MINOR_CHORDS[new_transposed_chords - 1], end=" ")
 
 
 if __name__ == "__main__":
