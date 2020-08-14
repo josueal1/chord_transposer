@@ -20,7 +20,7 @@ list_of_minor_chords = ['Am','A#m','Bm','Cm','C#m','Dm','D#m','Em','Fm','F#m','G
 line = "---------------------------------------------"
 input_indent = "\n--->"
 
-# Global Variables
+# Global Variabless
 original_minor_chord_value = ''
 original_major_chord_value = ''
 
