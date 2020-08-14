@@ -91,9 +91,8 @@ def main():
     ending_key = input("To what key are you trying to transpose?" + INPUT_INDENT)
 
     global transpose_steps
-    transpose_steps = _calc_transpose_steps(
-        starting_key, ending_key
-    )  ### created the global variable
+    ### created the global variable
+    transpose_steps = _calc_transpose_steps(starting_key, ending_key)
 
     print("Therefore we will be transposing with", transpose_steps, "steps")
     # -------------------------------------------------------------------------
