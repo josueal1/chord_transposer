@@ -1,0 +1,37 @@
+# Created by Josue Lopez Aug 14, 2020
+name: Update Release Tag with Auto Semantic Versioning
+
+on:
+  push:
+    branches: [ release ]
+
+jobs:
+  create-new-tag-version:
+      name: create-and-commit-new-tag-version
+
+      runs-on: ubuntu-latest
+
+      strategy:
+        matrix:
+          node-version: [10.x]
+
+      steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Enable NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: npm install (necessary for bump to work)
+        run: npm install
+      
+      - name: Configure Git Action bot Identity
+        run: git config --local user.email "action@github.com" && git config --local user.name "GitHub Action"
+
+      - name: Calculate new version based on Commits
+        run: npm run bump
+
+      - name: git push release tags to GitHub
+        run: git push --follow-tags origin release
