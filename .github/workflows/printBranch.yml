@@ -2,7 +2,7 @@
 name: print Branch
 
 on:
-  pull-request:
+  pull-requests:
     branches: [ master ]
 
 jobs:
