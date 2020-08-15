@@ -22,4 +22,4 @@ jobs:
       - name: git push release tags to GitHub
         run: |
             echo "print a branch, to find which:"
-            echo ${GITHUB_REF##*/}
+            echo ${GITHUB_REF}
