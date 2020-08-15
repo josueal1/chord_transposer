@@ -99,15 +99,15 @@ def main():
     print(LINE)
     given_value = int(input("How manys chords are in your list?" + INPUT_INDENT))
 
-    original_chords = input(
-        f"Enter the {given_value} chords as capital letters in one LINE.\n"
-    )
+    original_chords = input(f"Enter the {given_value} chords as capital letters in "
+                            f"one LINE.\n ")
 
     if len(original_chords.split()) == given_value:
         keys_to_transpose = original_chords.split()
     else:
         raise ValueError(
-            f"The number of chords you entered does not match the given value {given_value}."
+            f"The number of chords you entered does not match the given value "
+            f"{given_value}."
         )
 
     # -------------------------------------------------------------------------
